@@ -16,6 +16,9 @@
 		AD0A721529470D5F0067F29D /* chefspertRecipeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A721429470D5F0067F29D /* chefspertRecipeAppTests.swift */; };
 		AD0A721F29470D5F0067F29D /* chefspertRecipeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A721E29470D5F0067F29D /* chefspertRecipeAppUITests.swift */; };
 		AD0A722129470D5F0067F29D /* chefspertRecipeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A722029470D5F0067F29D /* chefspertRecipeAppUITestsLaunchTests.swift */; };
+		AD0A7232294716610067F29D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A7231294716610067F29D /* HomeScreen.swift */; };
+		AD0A723429478E160067F29D /* FavoriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723329478E160067F29D /* FavoriteScreen.swift */; };
+		AD0A7237294795A80067F29D /* StylingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A7236294795A80067F29D /* StylingFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		AD0A721A29470D5F0067F29D /* chefspertRecipeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chefspertRecipeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0A721E29470D5F0067F29D /* chefspertRecipeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chefspertRecipeAppUITests.swift; sourceTree = "<group>"; };
 		AD0A722029470D5F0067F29D /* chefspertRecipeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chefspertRecipeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AD0A7231294716610067F29D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		AD0A723329478E160067F29D /* FavoriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreen.swift; sourceTree = "<group>"; };
+		AD0A7236294795A80067F29D /* StylingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,7 @@
 		AD0A71FD29470D5D0067F29D /* chefspertRecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD0A7235294795940067F29D /* StylingFactory */,
 				AD0A722E29470EAE0067F29D /* Screens */,
 				AD0A722F29470EBD0067F29D /* Networking */,
 				AD0A723029470EC90067F29D /* Models */,
@@ -147,6 +154,8 @@
 		AD0A722E29470EAE0067F29D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AD0A7231294716610067F29D /* HomeScreen.swift */,
+				AD0A723329478E160067F29D /* FavoriteScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -163,6 +172,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AD0A7235294795940067F29D /* StylingFactory */ = {
+			isa = PBXGroup;
+			children = (
+				AD0A7236294795A80067F29D /* StylingFactory.swift */,
+			);
+			path = StylingFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +313,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD0A720B29470D5E0067F29D /* chefspertRecipeApp.xcdatamodeld in Sources */,
+				AD0A7232294716610067F29D /* HomeScreen.swift in Sources */,
 				AD0A720829470D5E0067F29D /* Persistence.swift in Sources */,
+				AD0A7237294795A80067F29D /* StylingFactory.swift in Sources */,
+				AD0A723429478E160067F29D /* FavoriteScreen.swift in Sources */,
 				AD0A720129470D5D0067F29D /* ContentView.swift in Sources */,
 				AD0A71FF29470D5D0067F29D /* chefspertRecipeAppApp.swift in Sources */,
 			);

@@ -6,15 +6,39 @@
 //
 
 import SwiftUI
+enum Screen{
+    case homeScreen
+    case favouriteScreen
+    
+}
+
+final class TabRouter: ObservableObject{
+    @Published var screen: Screen = .homeScreen
+    
+    func change(to screen: Screen){
+        self.screen = screen
+    }
+}
+
 
 @main
 struct chefspertRecipeAppApp: App {
-    let persistenceController = PersistenceController.shared
-
+    @StateObject var router = TabRouter()
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TabView(selection: $router.screen){
+                HomeScreen()
+                    .tag(Screen.homeScreen)
+                    .tabItem {
+                        Label("Recipes", systemImage: "fork.knife.circle.fill")
+                    }
+                FavoriteScreen()
+                    .tag(Screen.favouriteScreen)
+                    .tabItem {
+                        Label("Favourites", systemImage: "heart.circle")
+                    }
+            }
+            .accentColor(CustomColors.logoBlueColor)
         }
     }
 }
