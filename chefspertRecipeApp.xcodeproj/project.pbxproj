@@ -98,11 +98,11 @@
 		AD0A71FD29470D5D0067F29D /* chefspertRecipeApp */ = {
 			isa = PBXGroup;
 			children = (
-				AD0A71FE29470D5D0067F29D /* chefspertRecipeAppApp.swift */,
-				AD0A720029470D5D0067F29D /* ContentView.swift */,
+				AD0A722E29470EAE0067F29D /* Screens */,
+				AD0A722F29470EBD0067F29D /* Networking */,
+				AD0A723029470EC90067F29D /* Models */,
 				AD0A720229470D5E0067F29D /* Assets.xcassets */,
-				AD0A720729470D5E0067F29D /* Persistence.swift */,
-				AD0A720929470D5E0067F29D /* chefspertRecipeApp.xcdatamodeld */,
+				AD0A722D29470E900067F29D /* CoreData */,
 				AD0A720429470D5E0067F29D /* Preview Content */,
 			);
 			path = chefspertRecipeApp;
@@ -131,6 +131,38 @@
 				AD0A722029470D5F0067F29D /* chefspertRecipeAppUITestsLaunchTests.swift */,
 			);
 			path = chefspertRecipeAppUITests;
+			sourceTree = "<group>";
+		};
+		AD0A722D29470E900067F29D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AD0A720929470D5E0067F29D /* chefspertRecipeApp.xcdatamodeld */,
+				AD0A720729470D5E0067F29D /* Persistence.swift */,
+				AD0A720029470D5D0067F29D /* ContentView.swift */,
+				AD0A71FE29470D5D0067F29D /* chefspertRecipeAppApp.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		AD0A722E29470EAE0067F29D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AD0A722F29470EBD0067F29D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AD0A723029470EC90067F29D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
