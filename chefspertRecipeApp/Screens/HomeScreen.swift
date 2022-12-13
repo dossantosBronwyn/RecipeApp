@@ -3,14 +3,18 @@ import SwiftUI
 
 struct HomeScreen: View{
     @State var searchText: String = ""
+    @State var searching = false
     
     var body: some View {
         NavigationView {
             ScrollView{
                 VStack(alignment: .leading){
                     
-
-                        SearchBar(searchText: $searchText, placeHolderText: "Search for a Recipe...")
+                    HStack{
+                        SearchBar(searchText: $searchText, searching: $searching, placeHolderText: "Search for a Recipe...")
+                        DismissalButton(searchText: $searchText, searching: $searching)
+                            .padding()
+                    }
                     
                     filterList()
                     
@@ -21,6 +25,8 @@ struct HomeScreen: View{
                     HeadingView(title: "Pescaterian Friendly")
                     GridOfItems()
                 }.navigationTitle("Chefspert")
+                 
+               }
             }
         }
       
@@ -36,27 +42,42 @@ struct HomeScreen: View{
     //MARK: SearchBar
     struct SearchBar: View {
         @Binding var searchText: String
+        @Binding var searching: Bool
         var placeHolderText: String
+        
         var body: some View {
-            ZStack{
-                
-                Rectangle()
-                    .foregroundColor(.white)
-                
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                    TextField(placeHolderText, text: $searchText)
+            HStack{
+                ZStack{
+                    
+                    Rectangle()
+                        .foregroundColor(.white)
+                    
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                        TextField(placeHolderText, text: $searchText) { startedEditing in
+                            if startedEditing {
+                                withAnimation {
+                                    searching = true
+                                }
+                            }
+                        } onCommit: {
+                            withAnimation {
+                                searching = false
+                            }
+                        }
+                    }
+                    .foregroundColor(.gray)
+                    .padding(.leading, 13)
                 }
-                .foregroundColor(.gray)
-                .padding(.leading, 13)
+                .frame(height: 40)
+                .cornerRadius(13)
+                .shadow(radius: 3)
+                .padding()
             }
-            .frame(height: 40)
-            .cornerRadius(13)
-            .shadow(radius: 3)
-            .padding()
+         
         }
     }
-}
+
 //MARK: filterList
 struct filterList: View {
     
@@ -154,6 +175,27 @@ struct GridOfItems: View {
                 .padding()
                 .shadow(radius: 3)
             }
+        }
+    }
+}
+extension UIApplication {
+      func dismissKeyboard() {
+          sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+      }
+  }
+ 
+
+struct DismissalButton: View {
+    @Binding var searchText: String
+    @Binding var searching: Bool
+    var body: some View {
+        Button("Cancel") {
+                searchText = ""
+                withAnimation {
+                    searching = false
+                    UIApplication.shared.dismissKeyboard()
+                }
+           
         }
     }
 }
