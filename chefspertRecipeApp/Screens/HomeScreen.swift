@@ -12,11 +12,11 @@ struct HomeScreen: View{
                     
                     HStack{
                         SearchBar(searchText: $searchText, searching: $searching, placeHolderText: "Search for a Recipe...")
-                        DismissalButton(searchText: $searchText, searching: $searching)
+                    //    DismissalButton(searchText: $searchText, searching: $searching)
                             .padding()
                     }
                     
-                    filterList()
+                  //  filterList()
                     
                     HeadingView(title: "A pick from your Favorites...")
                     favoriteCardView()
@@ -111,34 +111,36 @@ struct HeadingView: View {
 struct favoriteCardView: View {
 
     var body: some View {
-        ZStack{
-            Rectangle()
-                .foregroundColor(.white)
-            
-            HStack{
-               Image("stockMeal")
-                    .resizable()
-                    .frame(width: 90, height: 90)
-                VStack{
-                    
-                    Text("Served Salmon")
-                        .font(.title3)
-                        .bold()
-                    Text("Pescaterian Friendly")
-                        .foregroundColor(.blue)
-                        .font(.subheadline)
+        NavigationLink(destination: DetailMealScreen()){
+            ZStack{
+                Rectangle()
+                    .foregroundColor(.white)
+                
+                HStack{
+                    Image("stockMeal")
+                        .resizable()
+                        .frame(width: 90, height: 90)
+                    VStack{
+                        
+                        Text("Served Salmon")
+                            .font(.title3)
+                            .bold()
+                        Text("Pescaterian Friendly")
+                            .foregroundColor(.blue)
+                            .font(.subheadline)
+                    }
+                    Spacer()
+                    Image(systemName: "heart.circle")
+                        .foregroundColor(.pink)
                 }
-                Spacer()
-                Image(systemName: "heart.circle")
-                    .foregroundColor(.pink)
+                .padding()
+                
             }
+            .frame(height: 150)
+            .cornerRadius(13)
+            .shadow(radius: 3)
             .padding()
-            
         }
-        .frame(height: 150)
-        .cornerRadius(13)
-        .shadow(radius: 3)
-        .padding()
     }
 }
 
