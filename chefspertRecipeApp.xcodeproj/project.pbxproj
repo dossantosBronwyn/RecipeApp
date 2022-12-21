@@ -165,9 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				AD133A072952F60B00DA8843 /* HomeScreen */,
-				AD0A723329478E160067F29D /* FavoriteScreen.swift */,
-				AD0A723C2949B8540067F29D /* DetailMealScreen.swift */,
-				AD0A723E2949E6350067F29D /* RecipeStepScreen.swift */,
+				AD133A0A2953081E00DA8843 /* FavoriteScreen */,
+				AD133A0D2953086300DA8843 /* DetailMealScreen */,
+				AD133A0C2953084000DA8843 /* RecipeStepScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -203,6 +203,30 @@
 				AD133A082952FDD500DA8843 /* viewModel.swift */,
 			);
 			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		AD133A0A2953081E00DA8843 /* FavoriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AD0A723329478E160067F29D /* FavoriteScreen.swift */,
+			);
+			path = FavoriteScreen;
+			sourceTree = "<group>";
+		};
+		AD133A0C2953084000DA8843 /* RecipeStepScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AD0A723E2949E6350067F29D /* RecipeStepScreen.swift */,
+			);
+			path = RecipeStepScreen;
+			sourceTree = "<group>";
+		};
+		AD133A0D2953086300DA8843 /* DetailMealScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AD0A723C2949B8540067F29D /* DetailMealScreen.swift */,
+			);
+			path = DetailMealScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

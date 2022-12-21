@@ -83,18 +83,23 @@ struct favoriteCardView: View {
                     Image("stockMeal")
                         .resizable()
                         .frame(width: 90, height: 90)
-                    VStack{
-                        
-                        Text("Served Salmon")
-                            .font(.title3)
-                            .bold()
-                        Text("Pescaterian Friendly")
-                            .foregroundColor(.blue)
-                            .font(.subheadline)
+                    ForEach( ,id: \.self){ foodItem in
+                        VStack{
+                            
+                            Text(foodItem.title)
+                                .font(.title3)
+                                .bold()
+                            
+                            
+                            Text("Pescaterian Friendly")
+                                .foregroundColor(.blue)
+                                .font(.subheadline)
+                        }
+                        Spacer()
+                        Image(foodItem.image)
+                            .resizable()
+                            .frame(width: 100, height: 100)
                     }
-                    Spacer()
-                    Image(systemName: "heart.circle")
-                        .foregroundColor(.pink)
                 }
                 .padding()
                 
