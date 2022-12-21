@@ -2,20 +2,17 @@ import Foundation
 import SwiftUI
 
 struct HomeScreen: View{
-    @State var searchText: String = ""
-    @State var searching = false
-    
+
+    @EnvironmentObject var homeScreen: HomeScreenViewModel
     var body: some View {
         NavigationView {
             ScrollView{
                 VStack(alignment: .leading){
                     
-                    HStack{
-                        SearchBar(searchText: $searchText, searching: $searching, placeHolderText: "Search for a Recipe...")
-                    //    DismissalButton(searchText: $searchText, searching: $searching)
-                            .padding()
-                    }
                     
+                    Button("temp search") {
+                        homeScreen.fetchSearchedFood(searched: homeScreen.searchText)
+                    }
                   //  filterList()
                     
                     HeadingView(title: "A pick from your Favorites...")
@@ -25,6 +22,8 @@ struct HomeScreen: View{
                     HeadingView(title: "Pescaterian Friendly")
                     GridOfItems()
                 }.navigationTitle("Chefspert")
+                    .searchable(text: $homeScreen.searchText)
+                    
                  
                }
             }
@@ -36,47 +35,11 @@ struct HomeScreen: View{
     struct HomeScreen_Previews: PreviewProvider {
         static var previews: some View {
             HomeScreen()
+                .environmentObject(HomeScreenViewModel())
         }
     }
     
-    //MARK: SearchBar
-    struct SearchBar: View {
-        @Binding var searchText: String
-        @Binding var searching: Bool
-        var placeHolderText: String
-        
-        var body: some View {
-            HStack{
-                ZStack{
-                    
-                    Rectangle()
-                        .foregroundColor(.white)
-                    
-                    HStack{
-                        Image(systemName: "magnifyingglass")
-                        TextField(placeHolderText, text: $searchText) { startedEditing in
-                            if startedEditing {
-                                withAnimation {
-                                    searching = true
-                                }
-                            }
-                        } onCommit: {
-                            withAnimation {
-                                searching = false
-                            }
-                        }
-                    }
-                    .foregroundColor(.gray)
-                    .padding(.leading, 13)
-                }
-                .frame(height: 40)
-                .cornerRadius(13)
-                .shadow(radius: 3)
-                .padding()
-            }
-         
-        }
-    }
+    
 
 //MARK: filterList
 struct filterList: View {

@@ -24,6 +24,7 @@ final class TabRouter: ObservableObject{
 @main
 struct chefspertRecipeAppApp: App {
     @StateObject var router = TabRouter()
+    @StateObject var homeScreen = HomeScreenViewModel()
     var body: some Scene {
         WindowGroup {
             TabView(selection: $router.screen){
@@ -38,6 +39,7 @@ struct chefspertRecipeAppApp: App {
                         Label("Favourites", systemImage: "heart.circle")
                     }
             }
+            .environmentObject(homeScreen)
             .accentColor(CustomColors.logoBlueColor)
         }
     }
