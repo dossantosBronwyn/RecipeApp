@@ -5,6 +5,7 @@ import Foundation
 class RecipeNetworkManager {
     let apiKey = "969493ec42a540f3810c3ad7bcb5da93"
     var complexRecipe: ComplexRecipeSearch?
+    var recipeInformation: RecipeInformationSearch?
     
     func fetchRandomRecipes(for foodSearch: String, completion: @escaping (ComplexRecipeSearch) -> ()){
         let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&query=\(foodSearch)"
@@ -44,7 +45,28 @@ class RecipeNetworkManager {
     }
     
     
-    
+    func fetchRecipeInformation(for id: Int, completion: @escaping (RecipeInformationSearch) ->()){
+        let url = "https://api.spoonacular.com/recipes/\(id)/information&apiKey=\(apiKey)"
+        
+        guard let safeURL = URL(string: url) else {return}
+        let request = URLRequest(url: safeURL)
+        
+        let serviceGroup = DispatchGroup()
+        serviceGroup.enter()
+        
+        let task = URLSession.shared.dataTask(with: request){ data, response, error in
+            guard let data = data else {return}
+                    do{
+                        let decodedData = try JSONDecoder().decode(RecipeInformationSearch.self, from: data)
+                        self.recipeInformation = decodedData
+                        serviceGroup.leave()
+                    }catch let error{
+                        print(error.localizedDescription)
+                    }
+        }
+        task.resume()
+        
+    }
     
    
   

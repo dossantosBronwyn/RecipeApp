@@ -19,11 +19,12 @@
 		AD0A7232294716610067F29D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A7231294716610067F29D /* HomeScreen.swift */; };
 		AD0A723429478E160067F29D /* FavoriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723329478E160067F29D /* FavoriteScreen.swift */; };
 		AD0A7237294795A80067F29D /* StylingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A7236294795A80067F29D /* StylingFactory.swift */; };
-		AD0A723929486AC20067F29D /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723829486AC20067F29D /* RecipeModel.swift */; };
+		AD0A723929486AC20067F29D /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723829486AC20067F29D /* RecipeSearchModel.swift */; };
 		AD0A723B29486D4D0067F29D /* RecipeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723A29486D4D0067F29D /* RecipeNetworkManager.swift */; };
 		AD0A723D2949B8540067F29D /* DetailMealScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723C2949B8540067F29D /* DetailMealScreen.swift */; };
 		AD0A723F2949E6350067F29D /* RecipeStepScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A723E2949E6350067F29D /* RecipeStepScreen.swift */; };
 		AD133A092952FDD500DA8843 /* viewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD133A082952FDD500DA8843 /* viewModel.swift */; };
+		AD133A0F29530AD300DA8843 /* RecipeInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD133A0E29530AD300DA8843 /* RecipeInformationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,11 +60,12 @@
 		AD0A7231294716610067F29D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		AD0A723329478E160067F29D /* FavoriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreen.swift; sourceTree = "<group>"; };
 		AD0A7236294795A80067F29D /* StylingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingFactory.swift; sourceTree = "<group>"; };
-		AD0A723829486AC20067F29D /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		AD0A723829486AC20067F29D /* RecipeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchModel.swift; sourceTree = "<group>"; };
 		AD0A723A29486D4D0067F29D /* RecipeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkManager.swift; sourceTree = "<group>"; };
 		AD0A723C2949B8540067F29D /* DetailMealScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealScreen.swift; sourceTree = "<group>"; };
 		AD0A723E2949E6350067F29D /* RecipeStepScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepScreen.swift; sourceTree = "<group>"; };
 		AD133A082952FDD500DA8843 /* viewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewModel.swift; sourceTree = "<group>"; };
+		AD133A0E29530AD300DA8843 /* RecipeInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInformationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +185,8 @@
 		AD0A723029470EC90067F29D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AD0A723829486AC20067F29D /* RecipeModel.swift */,
+				AD0A723829486AC20067F29D /* RecipeSearchModel.swift */,
+				AD133A0E29530AD300DA8843 /* RecipeInformationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,8 +368,9 @@
 				AD0A720829470D5E0067F29D /* Persistence.swift in Sources */,
 				AD0A723F2949E6350067F29D /* RecipeStepScreen.swift in Sources */,
 				AD0A7237294795A80067F29D /* StylingFactory.swift in Sources */,
+				AD133A0F29530AD300DA8843 /* RecipeInformationModel.swift in Sources */,
 				AD0A723429478E160067F29D /* FavoriteScreen.swift in Sources */,
-				AD0A723929486AC20067F29D /* RecipeModel.swift in Sources */,
+				AD0A723929486AC20067F29D /* RecipeSearchModel.swift in Sources */,
 				AD0A723B29486D4D0067F29D /* RecipeNetworkManager.swift in Sources */,
 				AD0A720129470D5D0067F29D /* ContentView.swift in Sources */,
 				AD133A092952FDD500DA8843 /* viewModel.swift in Sources */,
