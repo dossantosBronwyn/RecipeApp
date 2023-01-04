@@ -7,14 +7,14 @@ class RecipeNetworkManager {
     var complexRecipe: ComplexRecipeSearch?
     var recipeInformation: RecipeInformationSearch?
     
-    func fetchRandomRecipes(for foodSearch: String, completion: @escaping (ComplexRecipeSearch) -> ()){
-        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&query=\(foodSearch)"
+    func fetchAllRecipes(completion: @escaping (ComplexRecipeSearch) -> ()){
+       
+        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&number=5"
         
         guard let safeURL =  URL(string: url)  else { return }
         //Create a request
         let request = URLRequest(url: safeURL)
-        
-    //create a service group for async calls
+        //create a service group for async calls
         let serviceGroup = DispatchGroup()
         serviceGroup.enter()
         
@@ -30,8 +30,8 @@ class RecipeNetworkManager {
             }catch let error{
                 print(error.localizedDescription)
             }
-                
-           
+            
+            print(" ive called all recipes")
         }
         task.resume()
         
@@ -43,32 +43,76 @@ class RecipeNetworkManager {
             
         }
     }
-    
-    
-    func fetchRecipeInformation(for id: Int, completion: @escaping (RecipeInformationSearch) ->()){
-        let url = "https://api.spoonacular.com/recipes/\(id)/information&apiKey=\(apiKey)"
         
-        guard let safeURL = URL(string: url) else {return}
-        let request = URLRequest(url: safeURL)
-        
-        let serviceGroup = DispatchGroup()
-        serviceGroup.enter()
-        
-        let task = URLSession.shared.dataTask(with: request){ data, response, error in
-            guard let data = data else {return}
-                    do{
-                        let decodedData = try JSONDecoder().decode(RecipeInformationSearch.self, from: data)
-                        self.recipeInformation = decodedData
-                        serviceGroup.leave()
-                    }catch let error{
-                        print(error.localizedDescription)
-                    }
+        func fetchRandomRecipes(for foodSearch: String, completion: @escaping (ComplexRecipeSearch) -> ()){
+            print("fetching the search result")
+            let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&query=\(foodSearch)"
+            
+            guard let safeURL =  URL(string: url)  else { return }
+            //Create a request
+            let request = URLRequest(url: safeURL)
+            
+            //create a service group for async calls
+            let serviceGroup = DispatchGroup()
+            serviceGroup.enter()
+            
+            //create a task
+            let task = URLSession.shared.dataTask(with: request){ data, response, error in
+                guard let data = data else{return}
+                do{
+                    //decode data
+                    let decodedData = try JSONDecoder().decode(ComplexRecipeSearch.self, from: data)
+                    self.complexRecipe = decodedData
+                    serviceGroup.leave()
+                    
+                }catch let error{
+                    print(error.localizedDescription)
+                }
+                
+                
+            }
+            task.resume()
+            
+            serviceGroup.notify(queue: DispatchQueue.global()){ [weak self] in
+                DispatchQueue.main.async {
+                    guard let safeComplexRecipe = self?.complexRecipe else {return}
+                    completion(safeComplexRecipe)
+                }
+                
+            }
         }
-        task.resume()
         
-    }
-    
-   
+        
+        
+        
+        
+        
+        
+        
+        func fetchRecipeInformation(for id: Int, completion: @escaping (RecipeInformationSearch) ->()){
+            let url = "https ://api.spoonacular.com/recipes/\(id)/information&apiKey=\(apiKey)"
+            
+            guard let safeURL = URL(string: url) else {return}
+            let request = URLRequest(url: safeURL)
+            
+            let serviceGroup = DispatchGroup()
+            serviceGroup.enter()
+            
+            let task = URLSession.shared.dataTask(with: request){ data, response, error in
+                guard let data = data else {return}
+                do{
+                    let decodedData = try JSONDecoder().decode(RecipeInformationSearch.self, from: data)
+                    self.recipeInformation = decodedData
+                    serviceGroup.leave()
+                }catch let error{
+                    print(error.localizedDescription)
+                }
+            }
+            task.resume()
+            
+        }
+        
+
   
    
 }

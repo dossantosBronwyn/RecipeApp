@@ -8,7 +8,7 @@ import Foundation
     }
 
     // MARK: - ComplexSearch - Result
-    struct Result: Codable {
+    struct Result: Codable, Hashable {
         let id: Int
         let title: String
         let image: String
