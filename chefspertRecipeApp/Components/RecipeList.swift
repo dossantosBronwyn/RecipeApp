@@ -20,8 +20,7 @@ struct RecipeList: View {
             //MARK:- Vegeterian Recipes
             RecipeTitleView(headingText: "Vegeterian Friendly")
             RecipeCountTitleView()
-            
-            AllRecipeGridView()
+            VegeterianRecipeGridView()
             
             //MARK:- Vegeterian Recipes
             RecipeTitleView(headingText: "Popular Picks")
@@ -75,6 +74,20 @@ struct AllRecipeGridView: View {
         VStack{
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 15)],spacing: 15) {
                 ForEach(homeScreen.allRecipeResultList, id: \.self) { recipes in
+                    RecipeCard( recipeResult: recipes)
+                    
+                }
+            }
+            .padding(.top)
+        }
+    }
+}
+struct VegeterianRecipeGridView: View {
+    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    var body: some View {
+        VStack{
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 15)],spacing: 15) {
+                ForEach(homeScreen.vegeterianRecipes, id: \.self) { recipes in
                     RecipeCard( recipeResult: recipes)
                     
                 }

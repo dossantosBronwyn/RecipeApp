@@ -28,6 +28,7 @@ struct RecipeCard: View {
                 .resizable()
                 .modifier(PlacerHolderImageModifier())
                 .overlay(alignment:.bottom) {
+                   LinearGradient(gradient: Gradient(colors: [Color(.gray).opacity(0.3),Color(.gray)]), startPoint: .top, endPoint: .bottom)
                     Text(recipeResult.title)
                         .modifier(FoodCardTitelModifier())
                 }

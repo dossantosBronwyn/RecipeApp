@@ -27,6 +27,7 @@
 		AD133A0F29530AD300DA8843 /* RecipeInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD133A0E29530AD300DA8843 /* RecipeInformationModel.swift */; };
 		AD37814F29657FC70029B894 /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37814E29657FC70029B894 /* RecipeCard.swift */; };
 		AD37815129658B5E0029B894 /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37815029658B5E0029B894 /* RecipeList.swift */; };
+		AD3781532965A78C0029B894 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3781522965A78C0029B894 /* RecipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		AD133A0E29530AD300DA8843 /* RecipeInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInformationModel.swift; sourceTree = "<group>"; };
 		AD37814E29657FC70029B894 /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
 		AD37815029658B5E0029B894 /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
+		AD3781522965A78C0029B894 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				AD0A723C2949B8540067F29D /* DetailMealScreen.swift */,
+				AD3781522965A78C0029B894 /* RecipeView.swift */,
 			);
 			path = DetailMealScreen;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				AD0A720129470D5D0067F29D /* ContentView.swift in Sources */,
 				AD133A092952FDD500DA8843 /* viewModel.swift in Sources */,
 				AD0A71FF29470D5D0067F29D /* chefspertRecipeAppApp.swift in Sources */,
+				AD3781532965A78C0029B894 /* RecipeView.swift in Sources */,
 				AD37814F29657FC70029B894 /* RecipeCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

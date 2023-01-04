@@ -22,8 +22,8 @@ struct HomeScreen: View{
                         RecipeList()
                 }
             }
+            .navigationTitle("Chefspert")
         }
-        .navigationTitle("Chefspert")
         .searchable(text: $homeScreen.searchText)
         
         
