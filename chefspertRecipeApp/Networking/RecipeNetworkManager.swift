@@ -3,8 +3,17 @@ import Foundation
 // create a URL + Session
 
 class RecipeNetworkManager {
-    let apiKey = "969493ec42a540f3810c3ad7bcb5da93"
-    var complexRecipe: ComplexRecipeSearch?
+    let apiKey = "1590c289513443ca8f33a5c3d9de9279"
+    //"edc157bb1bf9467a91fefa792137dc9f"
+    //"bd4196aaee08464caef99edfba2d9d28"
+    //"969493ec42a540f3810c3ad7bcb5da93"
+    
+    var allRecipe: ComplexRecipeSearch?
+    var vegeterianRecipe: ComplexRecipeSearch?
+    var pescetarianRecipe: ComplexRecipeSearch?
+    var randomRecipe: ComplexRecipeSearch?
+    var searchedRecipe: ComplexRecipeSearch?
+    
     var recipeInformation: RecipeInformationSearch?
     
     func fetchAllRecipes(completion: @escaping (ComplexRecipeSearch) -> ()){
@@ -24,7 +33,7 @@ class RecipeNetworkManager {
             do{
                 //decode data
                 let decodedData = try JSONDecoder().decode(ComplexRecipeSearch.self, from: data)
-                self.complexRecipe = decodedData
+                self.allRecipe = decodedData
                 serviceGroup.leave()
                 
             }catch let error{
@@ -37,15 +46,14 @@ class RecipeNetworkManager {
         
         serviceGroup.notify(queue: DispatchQueue.global()){ [weak self] in
             DispatchQueue.main.async {
-                guard let safeComplexRecipe = self?.complexRecipe else {return}
-                completion(safeComplexRecipe)
+                guard let safeAllRecipe = self?.allRecipe else {return}
+                completion(safeAllRecipe)
             }
             
         }
     }
         
         func fetchSearchedRecipes(for foodSearch: String, completion: @escaping (ComplexRecipeSearch) -> ()){
-            print("fetching the search result")
             let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&query=\(foodSearch)"
             
             guard let safeURL =  URL(string: url)  else { return }
@@ -62,7 +70,7 @@ class RecipeNetworkManager {
                 do{
                     //decode data
                     let decodedData = try JSONDecoder().decode(ComplexRecipeSearch.self, from: data)
-                    self.complexRecipe = decodedData
+                    self.searchedRecipe = decodedData
                     serviceGroup.leave()
                     
                 }catch let error{
@@ -75,8 +83,8 @@ class RecipeNetworkManager {
             
             serviceGroup.notify(queue: DispatchQueue.global()){ [weak self] in
                 DispatchQueue.main.async {
-                    guard let safeComplexRecipe = self?.complexRecipe else {return}
-                    completion(safeComplexRecipe)
+                    guard let safeSearchedRecipe = self?.searchedRecipe else {return}
+                    completion(safeSearchedRecipe)
                 }
                 
             }
@@ -85,9 +93,9 @@ class RecipeNetworkManager {
         
         
         
-    func fetchVegeterianRecipes(completion: @escaping (ComplexRecipeSearch) -> ()){
+    func fetchDietSpecificRecipes(for dietType: String ,completion: @escaping (ComplexRecipeSearch) -> ()){
        
-        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&diet=vegetarian&number=5"
+        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&diet=\(dietType)&number=6"
         
         guard let safeURL =  URL(string: url)  else { return }
         //Create a request
@@ -102,7 +110,7 @@ class RecipeNetworkManager {
             do{
                 //decode data
                 let decodedData = try JSONDecoder().decode(ComplexRecipeSearch.self, from: data)
-                self.complexRecipe = decodedData
+                self.vegeterianRecipe = decodedData
                 serviceGroup.leave()
                 
             }catch let error{
@@ -114,13 +122,47 @@ class RecipeNetworkManager {
         
         serviceGroup.notify(queue: DispatchQueue.global()){ [weak self] in
             DispatchQueue.main.async {
-                guard let safeComplexRecipe = self?.complexRecipe else {return}
-                completion(safeComplexRecipe)
+                guard let safeVegeterianRecipe = self?.vegeterianRecipe else {return}
+                completion(safeVegeterianRecipe)
             }
             
         }
     }
-        
+  func  fetchPescetarianRecipes(completion: @escaping (ComplexRecipeSearch) -> ()){
+      
+      let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&diet=pescetarian&number=6"
+      
+      guard let safeURL =  URL(string: url)  else { return }
+      //Create a request
+      let request = URLRequest(url: safeURL)
+      //create a service group for async calls
+      let serviceGroup = DispatchGroup()
+      serviceGroup.enter()
+      
+      //create a task
+      let task = URLSession.shared.dataTask(with: request){ data, response, error in
+          guard let data = data else{return}
+          do{
+              //decode data
+              let decodedData = try JSONDecoder().decode(ComplexRecipeSearch.self, from: data)
+              self.pescetarianRecipe = decodedData
+              serviceGroup.leave()
+              
+          }catch let error{
+              print(error.localizedDescription)
+          }
+      
+      }
+      task.resume()
+      
+      serviceGroup.notify(queue: DispatchQueue.global()){ [weak self] in
+          DispatchQueue.main.async {
+              guard let safePescetarianRecipe = self?.pescetarianRecipe else {return}
+              completion(safePescetarianRecipe)
+          }
+          
+      }
+  }
         
         func fetchRecipeInformation(for id: Int, completion: @escaping (RecipeInformationSearch) ->()){
             let url = "https ://api.spoonacular.com/recipes/\(id)/information&apiKey=\(apiKey)"

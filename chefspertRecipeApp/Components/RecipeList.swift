@@ -13,23 +13,24 @@ struct RecipeList: View {
         
         VStack{
             //MARK:- All Recipes
-            RecipeTitleView(headingText: "All Recipes")
-            RecipeCountTitleView()
-            AllRecipeGridView()
+            RecipeTitleView(headingText: "Try Something New")
+            RecipeCountTitleView(recipeList: $homeScreen.allRecipeResultList)
+            RecipeGridView(recipeList: $homeScreen.allRecipeResultList)
             
             //MARK:- Vegeterian Recipes
             RecipeTitleView(headingText: "Vegeterian Friendly")
-            RecipeCountTitleView()
-            VegeterianRecipeGridView()
+            RecipeCountTitleView(recipeList: $homeScreen.vegeterianRecipes)
+            RecipeGridView(recipeList: $homeScreen.vegeterianRecipes)
             
-            //MARK:- Vegeterian Recipes
-            RecipeTitleView(headingText: "Popular Picks")
-            RecipeCountTitleView()
+            //MARK:- Pesceterian Recipes
+            RecipeTitleView(headingText: "Pescetarian Picks")
+            RecipeCountTitleView(recipeList: $homeScreen.pescetarianRecipes)
+            RecipeGridView(recipeList: $homeScreen.pescetarianRecipes)
             
-            AllRecipeGridView()
         }
         .onAppear(){
-            homeScreen.fetchAllRecipes()
+           // homeScreen.fetchAllRecipes()
+            // homeScreen.fetchDietSpecificRecipes()
         }
         .padding(.horizontal)
     }
@@ -58,38 +59,31 @@ struct RecipeTitleView: View {
 }
 
 struct RecipeCountTitleView: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    @Binding var recipeList: [Result]
     var body: some View {
         HStack{
-            Text("\(homeScreen.allRecipeResultList.count) \(homeScreen.allRecipeResultList.count > 1 ? "Recipes" : "Recipe") ")
+            Text("\(recipeList.count) \(recipeList.count > 1 ? "Recipes" : "Recipe") ")
                 .modifier(RecipeCountTitleModifier())
             Spacer()
         }
     }
 }
 
-struct AllRecipeGridView: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+struct RecipeGridView: View {
+    
+    @Binding var recipeList: [Result]
     var body: some View {
         VStack{
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 15)],spacing: 15) {
-                ForEach(homeScreen.allRecipeResultList, id: \.self) { recipes in
-                    RecipeCard( recipeResult: recipes)
+            ScrollView(.horizontal){
+                HStack(spacing: 15){
                     
-                }
-            }
-            .padding(.top)
-        }
-    }
-}
-struct VegeterianRecipeGridView: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
-    var body: some View {
-        VStack{
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 15)],spacing: 15) {
-                ForEach(homeScreen.vegeterianRecipes, id: \.self) { recipes in
-                    RecipeCard( recipeResult: recipes)
-                    
+                    ForEach(recipeList, id: \.self) { recipes in
+                        //                    NavigationLink(destination: RecipeView(recipe: recipes, recipeInfo: recipes)) {
+                        RecipeCard( recipeResult: recipes)
+                        //                    }
+                        
+                        
+                    }
                 }
             }
             .padding(.top)
