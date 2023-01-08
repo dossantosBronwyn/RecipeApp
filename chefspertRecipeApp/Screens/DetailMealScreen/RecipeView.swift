@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct RecipeView: View {
+    @EnvironmentObject var viewModel: ViewModel
     var recipe: Result
-    var recipeInfo: RecipeInformationSearch
     
     var body: some View {
         ScrollView{
@@ -27,9 +27,9 @@ struct RecipeView: View {
                     .bold()
                     .multilineTextAlignment(.center)
                 VStack(alignment: .leading, spacing: 30){
-                    Text("description")
+                    Text("Preparation Time")
                     VStack(alignment: .leading, spacing: 20){
-                        Text("Ingredients")
+                        Text("\(viewModel.recipeInformation?.cookingMinutes ?? 0) ")
                             .font(.headline)
                         Text("ingredients to follow")
                     }
@@ -43,6 +43,9 @@ struct RecipeView: View {
                 
             }
             .padding(.horizontal)
+        }
+        .onAppear(){
+           // viewModel.fetchRecipeInfortmation(id: recipe.id)
         }
         .ignoresSafeArea(.container, edges: .top)
     }

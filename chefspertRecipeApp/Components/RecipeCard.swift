@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeCard: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    @EnvironmentObject var homeScreen: ViewModel
     let recipeResult: Result
     
     var body: some View {
@@ -39,7 +39,7 @@ struct RecipeCard: View {
         }
         .modifier(FoodItemCardModifier())
         .onAppear(){
-            homeScreen.fetchAllRecipes()
+            //homeScreen.fetchAllRecipes()
         }
     }
     

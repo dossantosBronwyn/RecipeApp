@@ -3,66 +3,67 @@ import SwiftUI
 
 struct HomeScreen: View{
     
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    @EnvironmentObject var homeScreen: ViewModel
     
     var body: some View {
-        NavigationView {
-            ScrollView{
+            NavigationView {
+                
                 if !homeScreen.searchText.isEmpty{
                     VStack {
-                        List(homeScreen.searchedResultList, id: \.id){ foodItem in
-                            Text("foodItem.title")
-                        }
+                        RecipeSearchListView()
                         Button("temp search") {
                             homeScreen.fetchSearchedFood(searched: homeScreen.searchText)
                         }
-    
+                        
                     }
-    
+                    
                 }else{
+                    ScrollView{
                         RecipeList()
+                    }
+                }
+                   
+        }
+            .navigationTitle("Chefspert")
+            .toolbar{
+                ToolbarItem(placement: .principal) {
+                    Image(systemName: "star.fill")
                 }
             }
-            .navigationTitle("Chefspert")
-        }
         .searchable(text: $homeScreen.searchText)
-        
-        
-        
-        
     }
+    
     //MARK: Preview
     struct HomeScreen_Previews: PreviewProvider {
         static var previews: some View {
             HomeScreen()
-                .environmentObject(HomeScreenViewModel())
+                .environmentObject(ViewModel())
         }
     }
     
 }
 
 struct RecipeSearchListView: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    @EnvironmentObject var homeScreen: ViewModel
     var body: some View {
         List(homeScreen.searchedResultList, id: \.self){ foodItem in
-            Text(foodItem.title)
-//            NavigationLink {
-//
-//                //RecipeView()
-//            } label: {
-//                HStack{
-//                    AsyncImage(url: URL(string:foodItem.image)){ image in image
-//                            .resizable()
-//                            .modifier(RecipeSearchImageModifier())
-//
-//                    } placeholder: { Image(systemName: "photo")
-//                            .modifier(PlacerHolderImageModifier())
-//                    }
-//
-//                    Text(foodItem.title)
-//                    Spacer()
-//                }
-//            }
-        }
+            NavigationLink {
+
+                RecipeView(recipe: foodItem)
+            } label: {
+                HStack{
+                    AsyncImage(url: URL(string:foodItem.image)){ image in image
+                            .resizable()
+                            .modifier(RecipeSearchImageModifier())
+
+                    } placeholder: { Image(systemName: "photo")
+                            .modifier(PlacerHolderImageModifier())
+                    }
+
+                    Text(foodItem.title)
+                    Spacer()
+                }
+            }
+        }.scrollContentBackground(.hidden)
     }
 }

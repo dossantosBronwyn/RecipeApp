@@ -9,7 +9,6 @@ import SwiftUI
 enum Screen{
     case homeScreen
     case favouriteScreen
-    
 }
 
 final class TabRouter: ObservableObject{
@@ -24,7 +23,7 @@ final class TabRouter: ObservableObject{
 @main
 struct chefspertRecipeAppApp: App {
     @StateObject var router = TabRouter()
-    @StateObject var homeScreen = HomeScreenViewModel()
+    @StateObject var homeScreen = ViewModel()
     var body: some Scene {
         WindowGroup {
             TabView(selection: $router.screen){

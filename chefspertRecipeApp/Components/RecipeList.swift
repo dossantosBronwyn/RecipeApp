@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeList: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    @EnvironmentObject var homeScreen: ViewModel
     var body: some View {
         
         VStack{
@@ -40,18 +40,19 @@ struct RecipeList_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView{
             RecipeList()
-                .environmentObject(HomeScreenViewModel())
+                .environmentObject(ViewModel())
         }
     }
 }
 
 struct RecipeTitleView: View {
-    @EnvironmentObject var homeScreen: HomeScreenViewModel
+    @EnvironmentObject var homeScreen:ViewModel
     let headingText: String
     var body: some View {
         HStack{
             Text(headingText)
                 .modifier(HomeScreenTitleModifier())
+            
             
             Spacer()
         }

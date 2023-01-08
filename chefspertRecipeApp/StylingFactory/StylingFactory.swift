@@ -43,6 +43,7 @@ struct HomeScreenTitleModifier: ViewModifier {
             .font(.title2)
             .bold()
             .padding(.leading)
+            .padding(.top)
     }
 }
    
@@ -64,6 +65,6 @@ struct RecipeSearchImageModifier: ViewModifier {
         content
             .frame(width: 40 , height: 40)
             .clipShape(Circle())
-            .shadow(color: Color.black.opacity(0.3),radius: 15, x: 0, y: 10)
+            .shadow(color: Color.black.opacity(0.3),radius: 8, x: 0, y: 5)
     }
 }

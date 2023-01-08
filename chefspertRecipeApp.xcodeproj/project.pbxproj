@@ -26,6 +26,7 @@
 		AD37814F29657FC70029B894 /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37814E29657FC70029B894 /* RecipeCard.swift */; };
 		AD37815129658B5E0029B894 /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37815029658B5E0029B894 /* RecipeList.swift */; };
 		AD3781532965A78C0029B894 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3781522965A78C0029B894 /* RecipeView.swift */; };
+		AD378155296855DE0029B894 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD378154296855DE0029B894 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		AD37814E29657FC70029B894 /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
 		AD37815029658B5E0029B894 /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
 		AD3781522965A78C0029B894 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		AD378154296855DE0029B894 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				AD133A082952FDD500DA8843 /* viewModel.swift */,
+				AD378156296855E60029B894 /* SplashScreen */,
 				AD133A072952F60B00DA8843 /* HomeScreen */,
 				AD133A0A2953081E00DA8843 /* FavoriteScreen */,
 				AD133A0D2953086300DA8843 /* DetailMealScreen */,
@@ -233,6 +236,14 @@
 				AD37815029658B5E0029B894 /* RecipeList.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AD378156296855E60029B894 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AD378154296855DE0029B894 /* SplashScreen.swift */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD378155296855DE0029B894 /* SplashScreen.swift in Sources */,
 				AD0A720B29470D5E0067F29D /* chefspertRecipeApp.xcdatamodeld in Sources */,
 				AD0A7232294716610067F29D /* HomeScreen.swift in Sources */,
 				AD0A720829470D5E0067F29D /* Persistence.swift in Sources */,
