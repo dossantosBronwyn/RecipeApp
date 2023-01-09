@@ -44,9 +44,9 @@ struct HomeScreen: View{
 }
 
 struct RecipeSearchListView: View {
-    @EnvironmentObject var homeScreen: ViewModel
+    @EnvironmentObject var viewModel: ViewModel
     var body: some View {
-        List(homeScreen.searchedResultList, id: \.self){ foodItem in
+        List(viewModel.searchedResultList, id: \.self){ foodItem in
             NavigationLink {
 
                 RecipeView(recipe: foodItem)
