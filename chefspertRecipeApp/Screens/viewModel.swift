@@ -19,6 +19,7 @@ class ViewModel: ObservableObject{
     func fetchAllRecipes(){
         networking.fetchAllRecipes { result in
             self.allRecipeResultList = result.results
+            print(self.allRecipeResultList)
         }
     }
     

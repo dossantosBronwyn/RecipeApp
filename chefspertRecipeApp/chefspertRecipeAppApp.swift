@@ -24,6 +24,7 @@ final class TabRouter: ObservableObject{
 struct chefspertRecipeAppApp: App {
     @StateObject var router = TabRouter()
     @StateObject var homeScreen = ViewModel()
+    @StateObject var databaseManager = DatabaseManager()
     var body: some Scene {
         WindowGroup {
             TabView(selection: $router.screen){
@@ -39,6 +40,7 @@ struct chefspertRecipeAppApp: App {
                     }
             }
             .environmentObject(homeScreen)
+            .environment(\.managedObjectContext, databaseManager.container.viewContext)
             .accentColor(CustomColors.logoBlueColor)
         }
     }

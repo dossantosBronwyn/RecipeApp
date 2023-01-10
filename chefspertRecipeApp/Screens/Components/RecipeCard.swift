@@ -39,7 +39,7 @@ struct RecipeCard: View {
         }
         .modifier(FoodItemCardModifier())
         .onAppear(){
-            //homeScreen.fetchAllRecipes()
+            homeScreen.fetchAllRecipes()
         }
     }
     

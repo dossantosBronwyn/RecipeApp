@@ -10,11 +10,10 @@ struct HomeScreen: View{
                 
                 if !homeScreen.searchText.isEmpty{
                     VStack {
-                        RecipeSearchListView()
-                        Button("temp search") {
+                        Button("Find Recipes") {
                             homeScreen.fetchSearchedFood(searched: homeScreen.searchText)
                         }
-                        
+                        RecipeSearchListView()
                     }
                     
                 }else{
@@ -25,12 +24,9 @@ struct HomeScreen: View{
                    
         }
             .navigationTitle("Chefspert")
-            .toolbar{
-                ToolbarItem(placement: .principal) {
-                    Image(systemName: "star.fill")
-                }
-            }
+            
         .searchable(text: $homeScreen.searchText)
+        .onSubmit(of: .search) { }
     }
     
     //MARK: Preview

@@ -12,7 +12,7 @@ struct FoodItemCardModifier: ViewModifier {
             .frame(width: 160, height: 217, alignment: .top)
             .background(LinearGradient(gradient: Gradient(colors: [Color(.gray).opacity(0.3),Color(.gray)]), startPoint: .top, endPoint: .bottom))
             .clipShape(RoundedRectangle(cornerRadius: 20, style:.continuous))
-            .shadow(color: Color.black.opacity(0.3),radius: 15, x: 0, y: 10)
+            .shadow(color: Color.black.opacity(0.3),radius: 5, x: 0, y: 8)
     }
 }
 

@@ -26,11 +26,19 @@ struct RecipeView: View {
         .frame(height: 300)
         .background(LinearGradient(gradient: Gradient(colors: [Color(.gray).opacity(0.3),Color(.gray)]), startPoint: .top, endPoint: .bottom))
             VStack(spacing: 30){
-                Text(recipe.title)
-                    .font(.largeTitle)
-                    .bold()
-                    .multilineTextAlignment(.center)
-                
+                HStack{
+                    Text(recipe.title)
+                        .font(.largeTitle)
+                        .bold()
+                        .multilineTextAlignment(.center)
+                    
+                    Button{
+                        addToFavourites()
+                    }label:{
+                        Label("Add to Favorites", systemImage: "heart")
+                            .foregroundColor(.pink)
+                    }
+                }
                 HStack{
                     if recipe.veryPopular == true{
                         VStack{
@@ -100,9 +108,17 @@ struct RecipeView: View {
     
     func addToFavourites(){
         let favouriteRecipe = Favourite(context: context)
-        favouriteRecipe.title
         
+        favouriteRecipe.title = recipe.title
+        favouriteRecipe.cookmins = String(recipe.cookingMinutes)
+        favouriteRecipe.healthscore = String(recipe.healthScore)
+        favouriteRecipe.prepmins = String(recipe.preparationMinutes)
+        favouriteRecipe.likes = String(recipe.aggregateLikes)
+        favouriteRecipe.serves = String(recipe.servings)
+        favouriteRecipe.image = recipe.image
+        try? context.save()
     }
+ 
 }
 
 

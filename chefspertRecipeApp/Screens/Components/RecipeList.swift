@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct RecipeList: View {
-    @EnvironmentObject var homeScreen: ViewModel
+    @EnvironmentObject var viewModel: ViewModel
     var body: some View {
         
         VStack{
             //MARK:- All Recipes
             RecipeTitleView(headingText: "Try Something New")
-            RecipeCountTitleView(recipeList: $homeScreen.allRecipeResultList)
-            RecipeGridView(recipeList: $homeScreen.allRecipeResultList)
+            RecipeCountTitleView(recipeList: $viewModel.allRecipeResultList)
+            RecipeGridView(recipeList: $viewModel.allRecipeResultList)
             
-            //MARK:- Vegeterian Recipes
-            RecipeTitleView(headingText: "Vegeterian Friendly")
-            RecipeCountTitleView(recipeList: $homeScreen.vegeterianRecipes)
-            RecipeGridView(recipeList: $homeScreen.vegeterianRecipes)
+            
             
             //MARK:- Pesceterian Recipes
             RecipeTitleView(headingText: "Pescetarian Picks")
-            RecipeCountTitleView(recipeList: $homeScreen.pescetarianRecipes)
-            RecipeGridView(recipeList: $homeScreen.pescetarianRecipes)
+            RecipeCountTitleView(recipeList: $viewModel.pescetarianRecipes)
+            RecipeGridView(recipeList: $viewModel.pescetarianRecipes)
+            
+            //MARK:- Vegeterian Recipes
+            RecipeTitleView(headingText: "Vegeterian Friendly")
+            RecipeCountTitleView(recipeList: $viewModel.vegeterianRecipes)
+            RecipeGridView(recipeList: $viewModel.vegeterianRecipes)
             
         }
         .onAppear(){
-           // homeScreen.fetchAllRecipes()
-            // homeScreen.fetchDietSpecificRecipes()
+            viewModel.fetchAllRecipes()
+            viewModel.fetchDietSpecificRecipes()
         }
         .padding(.horizontal)
     }
@@ -75,13 +77,13 @@ struct RecipeGridView: View {
     @Binding var recipeList: [Result]
     var body: some View {
         VStack{
-            ScrollView(.horizontal){
+            ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 15){
                     
                     ForEach(recipeList, id: \.self) { recipes in
-                        //                    NavigationLink(destination: RecipeView(recipe: recipes, recipeInfo: recipes)) {
+                                   NavigationLink(destination: RecipeView(recipe: recipes)) {
                         RecipeCard( recipeResult: recipes)
-                        //                    }
+                                      }
                         
                         
                     }

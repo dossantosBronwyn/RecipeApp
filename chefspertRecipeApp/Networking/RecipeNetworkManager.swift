@@ -3,7 +3,7 @@ import Foundation
 // create a URL + Session
 
 class RecipeNetworkManager {
-    let apiKey = "b9c19eab49404c3fab81382adb8d38d7"
+    let apiKey = "edc157bb1bf9467a91fefa792137dc9f"
     //"1590c289513443ca8f33a5c3d9de9279"
     //"edc157bb1bf9467a91fefa792137dc9f"
     //"bd4196aaee08464caef99edfba2d9d28"
@@ -19,7 +19,7 @@ class RecipeNetworkManager {
     
     func fetchAllRecipes(completion: @escaping (ComplexRecipeSearch) -> ()){
        
-        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&number=5"
+        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&number=5&addRecipeInformation=true"
         
         guard let safeURL =  URL(string: url)  else { return }
         //Create a request
@@ -38,7 +38,7 @@ class RecipeNetworkManager {
                 serviceGroup.leave()
                 
             }catch let error{
-                print(error.localizedDescription)
+                print("fetch all recipes: \(error.localizedDescription)")
             }
             
             print(" ive called all recipes")
@@ -96,7 +96,7 @@ class RecipeNetworkManager {
         
     func fetchDietSpecificRecipes(for dietType: String ,completion: @escaping (ComplexRecipeSearch) -> ()){
        
-        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&diet=\(dietType)&number=6"
+        let url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=\(apiKey)&diet=\(dietType)&number=6&addRecipeInformation=true"
         
         guard let safeURL =  URL(string: url)  else { return }
         //Create a request
@@ -115,7 +115,7 @@ class RecipeNetworkManager {
                 serviceGroup.leave()
                 
             }catch let error{
-                print(error.localizedDescription)
+                print("fetch diet specific: \(error.localizedDescription)")
             }
         
         }

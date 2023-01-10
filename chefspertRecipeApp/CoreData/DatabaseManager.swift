@@ -1,7 +1,7 @@
 import CoreData
 import Foundation
 
-class DatabaseManager{
+class DatabaseManager: ObservableObject{
     let container =  NSPersistentContainer(name: "FoodDatabase")
     init(){
         container.loadPersistentStores { description, error in
