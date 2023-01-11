@@ -33,11 +33,11 @@ struct FavoriteRecipeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
-                        foodSpecification(title: "Prep Mins", infoSlot: recipe.prepmins ?? "")
-                        foodSpecification(title: "Cook Mins", infoSlot: recipe.cookmins ?? "")
-                        foodSpecification(title: "Health Score", infoSlot: recipe.healthscore ?? "")
-                        foodSpecification(title: "Likes", infoSlot: recipe.likes ?? "")
-                        foodSpecification(title: "Serves", infoSlot: recipe.serves ?? "")
+                        foodSpecification(imageName: "clock", title: "Prep Mins", infoSlot: recipe.prepmins ?? "")
+                        foodSpecification(imageName: "frying.pan", title: "Cook Mins", infoSlot: recipe.cookmins ?? "")
+                        foodSpecification(imageName: "stethoscope.circle", title: "Health Score", infoSlot: recipe.healthscore ?? "")
+                        foodSpecification(imageName: "hand.thumbsup", title: "Likes", infoSlot: recipe.likes ?? "")
+                        foodSpecification(imageName: "person.3", title: "Serves", infoSlot: recipe.serves ?? "")
                     }
                     
                 }

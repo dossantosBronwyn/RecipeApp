@@ -26,9 +26,9 @@ struct RecipeView: View {
         .frame(height: 300)
         .background(LinearGradient(gradient: Gradient(colors: [Color(.gray).opacity(0.3),Color(.gray)]), startPoint: .top, endPoint: .bottom))
             VStack(spacing: 30){
-                HStack{
+                VStack{
                     Text(recipe.title)
-                        .font(.largeTitle)
+                        .font(.title2)
                         .bold()
                         .multilineTextAlignment(.center)
                     
@@ -59,25 +59,25 @@ struct RecipeView: View {
                         VStack{
                             Image(systemName: "leaf.fill")
                                 .foregroundColor(.green)
-                            Text("Healthy")
+                            Text("Health")
                         }
                         .padding()
                     }else{
                         VStack{
                             Image(systemName: "leaf")
                                 .foregroundColor(.gray)
-                            Text("Healthy")
+                            Text("Health")
                         }
                         .padding()
                     }
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
-                        foodSpecification(title: "Prep time", infoSlot: "\(recipe.preparationMinutes < 1 ? "0 min" : "\(recipe.preparationMinutes)mins")")
-                        foodSpecification(title: "Likes", infoSlot: "\(recipe.aggregateLikes)")
-                        foodSpecification(title: "Health", infoSlot: "\(recipe.healthScore)")
-                        foodSpecification(title: "Serves", infoSlot: "\(recipe.servings)")
-                        foodSpecification(title: "Cook", infoSlot:  "\(recipe.cookingMinutes < 1 ? "0 min" : "\(recipe.cookingMinutes)mins")")
+                        foodSpecification(imageName: "clock", title: "Prep time", infoSlot: "\(recipe.preparationMinutes < 1 ? "0 min" : "\(recipe.preparationMinutes)mins")")
+                        foodSpecification(imageName: "hand.thumbsup", title: "Likes", infoSlot: "\(recipe.aggregateLikes)")
+                        foodSpecification(imageName: "stethoscope.circle", title: "Health", infoSlot: "\(recipe.healthScore)")
+                        foodSpecification(imageName: "person.3", title: "Serves", infoSlot: "\(recipe.servings)")
+                        foodSpecification(imageName: "frying.pan", title: "Cook", infoSlot:  "\(recipe.cookingMinutes < 1 ? "0 min" : "\(recipe.cookingMinutes)mins")")
                     }
                     
                 }
@@ -129,10 +129,12 @@ struct RecipeView: View {
 //}
 
 struct foodSpecification: View {
+    var imageName: String
     var title: String
     var infoSlot: String
     var body: some View {
         VStack{
+            Image(systemName: imageName)
             Text(title)
             Text(infoSlot)
         }.padding()

@@ -3,7 +3,7 @@ import Foundation
 // create a URL + Session
 
 class RecipeNetworkManager {
-    let apiKey = "edc157bb1bf9467a91fefa792137dc9f"
+    let apiKey = "1590c289513443ca8f33a5c3d9de9279"
     //"1590c289513443ca8f33a5c3d9de9279"
     //"edc157bb1bf9467a91fefa792137dc9f"
     //"bd4196aaee08464caef99edfba2d9d28"
