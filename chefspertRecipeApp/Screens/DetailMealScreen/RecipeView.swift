@@ -88,7 +88,7 @@ struct RecipeView: View {
                         Text("no directions found")
                         List {
                             ForEach(viewModel.ingredientArray, id: \.self){ item in
-                                Text(item)
+                                Text(item.description)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                                     .listRowBackground(Color(.red))
